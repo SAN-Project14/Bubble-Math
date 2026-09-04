@@ -158,8 +158,15 @@ export const GameScreen: React.FC<GameScreenProps> = ({
     };
   }, []);
 
-  // Lifespan definition: Normal mode (STANDARD) is 7000ms (7s); Zen is 10000ms; others remain 5000ms
-  const bubbleLifespan = mode === 'STANDARD' ? 7000 : mode === 'ZEN' ? 10000 : 5000;
+  // Lifespan definition: Normal (STANDARD) 7s; Frenzy Blitz 10s; Zen 10s; others 5s
+  const bubbleLifespan =
+    mode === 'STANDARD'
+      ? 7000
+      : mode === 'FRENZY_BLITZ'
+      ? 10000
+      : mode === 'ZEN'
+      ? 10000
+      : 5000;
 
   // Background Music switch on mount
   useEffect(() => {
@@ -453,7 +460,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
         );
       }
 
-      const spawnIntervalMs = mode === 'ZEN' ? 3200 : mode === 'FRENZY_BLITZ' ? 2100 : 2700;
+      const spawnIntervalMs = mode === 'ZEN' ? 3200 : mode === 'FRENZY_BLITZ' ? 4000 : 2700;
 
       spawnTimerRef.current = window.setInterval(() => {
         if (isPausedRef.current || isGameOverRef.current) return;

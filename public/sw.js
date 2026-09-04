@@ -1,11 +1,12 @@
 // Bubble Math - Service Worker (Production-Ready PWA)
-const CACHE_NAME = 'bubble-math-v1.0.1';
+const CACHE_NAME = 'bubble-math-v1';
 
 // Core static assets to precache on installation for immediate offline availability
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
+  '/manifest.webmanifest',
   '/favicon.ico',
   '/favicon.png',
   '/icon.svg',
@@ -74,6 +75,12 @@ self.addEventListener('fetch', (event) => {
   }
 
   const url = new URL(request.url);
+
+  // Never intercept requests to the service worker itself
+  if (url.pathname === '/sw.js') {
+    return;
+  }
+
   const isSameOrigin = url.origin === self.location.origin;
 
   // 1. Navigation requests (HTML pages): Network-first with cache fallback

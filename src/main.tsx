@@ -3,30 +3,24 @@ import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
-// Production Service Worker Registration for PWA
-if (
-  typeof window !== 'undefined' &&
-  'serviceWorker' in navigator &&
-  (window.location.protocol === 'https:' ||
-    window.location.hostname === 'localhost' ||
-    window.location.hostname === '127.0.0.1')
-) {
-  window.addEventListener('load', () => {
+// Service Worker Registration for Bubble Math PWA
+if ('serviceWorker' in navigator) {
+  const registerServiceWorker = () => {
     navigator.serviceWorker
       .register('/sw.js', { scope: '/' })
       .then((registration) => {
-        console.log('[PWA] Service Worker registered with scope:', registration.scope);
+        console.log('Bubble Math Service Worker registered:', registration.scope);
 
-        // Check for updates periodically
+        // Detect updates to service worker
         registration.addEventListener('updatefound', () => {
           const installingWorker = registration.installing;
           if (installingWorker) {
             installingWorker.addEventListener('statechange', () => {
               if (installingWorker.state === 'installed') {
                 if (navigator.serviceWorker.controller) {
-                  console.log('[PWA] New version of Bubble Math is ready.');
+                  console.log('Bubble Math: New version available.');
                 } else {
-                  console.log('[PWA] Bubble Math is ready for offline play.');
+                  console.log('Bubble Math: Content is cached for offline use.');
                 }
               }
             });
@@ -34,9 +28,15 @@ if (
         });
       })
       .catch((error) => {
-        console.warn('[PWA] Service Worker registration failed:', error);
+        console.error('Bubble Math Service Worker registration failed:', error);
       });
-  });
+  };
+
+  if (document.readyState === 'complete') {
+    registerServiceWorker();
+  } else {
+    window.addEventListener('load', registerServiceWorker);
+  }
 }
 
 createRoot(document.getElementById('root')!).render(
