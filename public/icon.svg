@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background subtle gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- Main Outer Bubble Gradient -->
+    <radialGradient id="bubbleGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#67e8f9" stop-opacity="0.95" />
+      <stop offset="25%" stop-color="#38bdf8" stop-opacity="0.85" />
+      <stop offset="65%" stop-color="#6366f1" stop-opacity="0.75" />
+      <stop offset="90%" stop-color="#4338ca" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.9" />
+    </radialGradient>
+
+    <!-- Inner Bubble Glow -->
+    <radialGradient id="innerGlow" cx="40%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4" />
+      <stop offset="40%" stop-color="#38bdf8" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Specular highlight gradient -->
+    <linearGradient id="specularGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Filter for soft bubble glow -->
+    <filter id="bubbleShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#06b6d4" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="512" height="512" rx="100" fill="url(#bgGrad)" />
+
+  <!-- Outer ambient glow ring -->
+  <circle cx="256" cy="256" r="195" fill="none" stroke="#06b6d4" stroke-width="4" stroke-opacity="0.25" />
+
+  <!-- Small floating decorative bubbles -->
+  <circle cx="100" cy="120" r="28" fill="#38bdf8" fill-opacity="0.4" />
+  <circle cx="100" cy="120" r="28" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.5" fill="none" />
+  <ellipse cx="93" cy="112" rx="8" ry="4" fill="#ffffff" fill-opacity="0.7" transform="rotate(-30 93 112)" />
+
+  <circle cx="410" cy="380" r="32" fill="#818cf8" fill-opacity="0.35" />
+  <circle cx="410" cy="380" r="32" stroke="#c7d2fe" stroke-width="1.5" stroke-opacity="0.4" fill="none" />
+  <ellipse cx="402" cy="372" rx="9" ry="5" fill="#ffffff" fill-opacity="0.6" transform="rotate(-30 402 372)" />
+
+  <!-- Main Hero Bubble -->
+  <g filter="url(#bubbleShadow)">
+    <circle cx="256" cy="256" r="168" fill="url(#bubbleGrad)" stroke="#a5f3fc" stroke-width="5" stroke-opacity="0.8" />
+    <circle cx="256" cy="256" r="164" fill="url(#innerGlow)" />
+  </g>
+
+  <!-- Glass specular rim & reflection -->
+  <ellipse cx="205" cy="160" rx="60" ry="28" fill="url(#specularGrad)" transform="rotate(-38 205 160)" />
+  <ellipse cx="320" cy="360" rx="36" ry="14" fill="#ffffff" fill-opacity="0.25" transform="rotate(35 320 360)" />
+
+  <!-- Math Symbols inside Main Bubble -->
+  <g fill="#ffffff" filter="drop-shadow(0px 3px 6px rgba(0,0,0,0.5))">
+    <!-- Center text: 7 + 5 -->
+    <text x="256" y="248" font-family="-apple-system, BlinkMacSystemFont, 'Fredoka', 'Outfit', sans-serif" font-size="74" font-weight="900" text-anchor="middle" fill="#ffffff" letter-spacing="-1">
+      7 + 5
+    </text>
+
+    <!-- Answer pill badge underneath -->
+    <rect x="186" y="282" width="140" height="52" rx="26" fill="#0891b2" fill-opacity="0.85" stroke="#67e8f9" stroke-width="2.5" />
+    <text x="256" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Fredoka', 'Outfit', sans-serif" font-size="34" font-weight="800" text-anchor="middle" fill="#ffffff">
+      = 12
+    </text>
+  </g>
+
+  <!-- Sparkle stars -->
+  <path d="M 370 120 Q 370 140 390 140 Q 370 140 370 160 Q 370 140 350 140 Q 370 140 370 120" fill="#fef08a" />
+  <path d="M 125 360 Q 125 372 137 372 Q 125 372 125 384 Q 125 372 113 372 Q 125 372 125 360" fill="#a5f3fc" />
+</svg>

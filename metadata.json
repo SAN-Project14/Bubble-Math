@@ -1,6 +1,6 @@
 {
   "name": "Bubble Math",
-  "description": "Pop the right equation. Beat the clock. Master the numbers in this fast-paced educational math arcade game.",
+  "description": "A fast-paced bubble math game with multiple game modes.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

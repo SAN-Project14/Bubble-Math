@@ -2,6 +2,7 @@ import React from 'react';
 import { Play, LayoutGrid, BookOpen, Settings, Trophy, Sparkles } from 'lucide-react';
 import { soundEngine } from '../utils/audio';
 import { GameStatistics } from '../types';
+import { PWAInstallButton } from './PWAInstallButton';
 
 interface MainMenuProps {
   stats: GameStatistics;
@@ -137,6 +138,9 @@ export const MainMenu: React.FC<MainMenuProps> = ({
               SETTINGS
             </button>
           </div>
+
+          {/* In-App PWA Install Action (renders only when installable / on iOS, hides when standalone) */}
+          <PWAInstallButton />
         </div>
       </div>
 

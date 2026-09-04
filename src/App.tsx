@@ -10,6 +10,7 @@ import { CountdownOverlay } from './components/CountdownOverlay';
 import { GameScreen } from './components/GameScreen';
 import { ResultsScreen } from './components/ResultsScreen';
 import { SettingsModal } from './components/SettingsModal';
+import { OfflineIndicator } from './components/OfflineIndicator';
 
 export default function App() {
   const [screen, setScreen] = useState<ScreenState>('MENU');
@@ -140,6 +141,9 @@ export default function App() {
           onClose={() => setShowSettingsModal(false)}
         />
       )}
+
+      {/* Non-intrusive offline connectivity status pill */}
+      <OfflineIndicator />
     </main>
   );
 }

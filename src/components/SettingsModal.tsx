@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Volume2, VolumeX, Music, Zap, Trash2, X, AlertTriangle } from 'lucide-react';
 import { GameSettings, Difficulty } from '../types';
 import { soundEngine } from '../utils/audio';
+import { PWAInstallButton } from './PWAInstallButton';
 
 interface SettingsModalProps {
   settings: GameSettings;
@@ -169,6 +170,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           >
             {!settings.reducedMotion ? 'FULL' : 'REDUCED'}
           </button>
+        </div>
+
+        {/* PWA Install Button (if installable and not in standalone mode) */}
+        <div className="pt-2">
+          <PWAInstallButton />
         </div>
 
         {/* Reset Data Section */}
