@@ -460,7 +460,14 @@ export const GameScreen: React.FC<GameScreenProps> = ({
         );
       }
 
-      const spawnIntervalMs = mode === 'ZEN' ? 3200 : mode === 'FRENZY_BLITZ' ? 4000 : 2700;
+      const spawnIntervalMs =
+        mode === 'ZEN'
+          ? 3200
+          : mode === 'FRENZY_BLITZ'
+          ? 4000
+          : mode === 'STANDARD'
+          ? 2000
+          : 2700;
 
       spawnTimerRef.current = window.setInterval(() => {
         if (isPausedRef.current || isGameOverRef.current) return;
